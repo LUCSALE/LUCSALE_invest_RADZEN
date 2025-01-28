@@ -1,23 +1,24 @@
 using Radzen;
 using LUCSALEInvestRADZEN.Components;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
-builder.Services.AddRazorComponents()
-      .AddInteractiveServerComponents().AddHubOptions(options => options.MaximumReceiveMessageSize = 10 * 1024 * 1024);
-
+builder.Services.AddRazorComponents().AddInteractiveServerComponents().AddHubOptions(options => options.MaximumReceiveMessageSize = 10 * 1024 * 1024);
 builder.Services.AddControllers();
 builder.Services.AddRadzenComponents();
-
 builder.Services.AddRadzenCookieThemeService(options =>
 {
     options.Name = "LUCSALEInvestRADZENTheme";
     options.Duration = TimeSpan.FromDays(365);
 });
 builder.Services.AddHttpClient();
+builder.Services.AddScoped<LUCSALEInvestRADZEN.CadastroDBService>();
+builder.Services.AddDbContext<LUCSALEInvestRADZEN.Data.CadastroDBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CadastroDBConnection"));
+});
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -30,8 +31,5 @@ app.UseHttpsRedirection();
 app.MapControllers();
 app.UseStaticFiles();
 app.UseAntiforgery();
-
-app.MapRazorComponents<App>()
-   .AddInteractiveServerRenderMode();
-
+app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
 app.Run();
