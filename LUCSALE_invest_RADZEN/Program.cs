@@ -18,6 +18,11 @@ builder.Services.AddDbContext<LUCSALEInvestRADZEN.Data.CadastroDBContext>(option
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("CadastroDBConnection"));
 });
+builder.Services.AddScoped<LUCSALEInvestRADZEN.LUCSALE_ExemplosService>();
+builder.Services.AddDbContext<LUCSALEInvestRADZEN.Data.LUCSALE_ExemplosContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("LUCSALE_ExemplosConnection"));
+});
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
