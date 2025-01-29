@@ -3,7 +3,8 @@
 <RadzenComponents />
 
 <RadzenLayout style="grid-template-areas: 'rz-sidebar rz-header' 'rz-sidebar rz-body';">
-    <RadzenHeader Style="display: block; background-color: var(--rz-base-300); width: 613px; position: static; vertical-align: text-top">
+    <RadzenHeader Style="background-color: #ffffff; color: #ffffff">
+        <RadzenImage Path="images/LUCSALE_Invest.png"></RadzenImage>
     </RadzenHeader>
     <RadzenBody Expanded="@sidebarExpanded">
         <RadzenRow class="rz-mx-auto rz-px-4 rz-pt-2 rz-pt-md-4 rz-pt-lg-6 rz-pt-xl-12 rz-pb-2 rz-pb-lg-12" Style="max-width: 1440px;">
@@ -14,7 +15,6 @@
     </RadzenBody>
     <RadzenSidebar @bind-Expanded="@sidebarExpanded" style="z-index: 2">
         <RadzenStack AlignItems="Radzen.AlignItems.Center" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding); border-bottom: var(--rz-panel-menu-item-border);">
-            <RadzenImage  style="width: 223px; height: 133px" Path="images/LUCSALE_Invest.png"></RadzenImage>
             <RadzenText Text="Opções:" TextStyle="Radzen.Blazor.TextStyle.Subtitle1" class="rz-mb-0" style="color: var(--rz-sidebar-color); font-family: 'Arial Black'; vertical-align: bottom; width: 72px; height: 34px; font-style: italic; text-decoration: underline" />
         </RadzenStack>
         <RadzenPanelMenu>
@@ -22,8 +22,12 @@
             <RadzenPanelMenuItem Text="Alunos" Path="alunos" />
             <RadzenPanelMenuItem Text="Prods" Path="prods" />
         </RadzenPanelMenu>
-        <RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="0" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding);">
+        <RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="0" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding); vertical-align: bottom; height: 42px">
             <RadzenText Text="Copyright Ⓒ 2025" TextStyle="Radzen.Blazor.TextStyle.Caption" class="rz-mb-0" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />
         </RadzenStack>
+<RadzenImage Path="images/LUCSALE_logo.png" Style="vertical-align: bottom"></RadzenImage>
+        
+        <RadzenFooter>
+        </RadzenFooter>
     </RadzenSidebar>
 </RadzenLayout>
